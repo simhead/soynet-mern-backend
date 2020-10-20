@@ -6,6 +6,8 @@ const Activity = new Schema(
         faceid: { type: Number, required: true },
         name: { type: String, required: true },
         datetime: { type: Date, required: true },
+        deviceid: { type: Number },
+        feature: { type: Number },
         visitcnt: { type: Number},
         stayhour: { type: Number},
         temperature: { type: Number},
