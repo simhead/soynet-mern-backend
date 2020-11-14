@@ -14,6 +14,7 @@ var app = express();
 app.use(cors())
 const movieRouter = require('./routes/movie-router')
 const userRouter = require('./routes/soynet-user-router')
+const deviceRouter = require('./routes/soynet-device-router')
 const activityRouter = require('./routes/soynet-activity-router')
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
@@ -32,6 +33,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/api', movieRouter);
 app.use('/soynet/api', userRouter);
+app.use('/soynet/api', deviceRouter);
 app.use('/soynet/faceid/api', activityRouter);
 
 // catch 404 and forward to error handler
