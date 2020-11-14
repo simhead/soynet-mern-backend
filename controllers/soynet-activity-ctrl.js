@@ -108,6 +108,21 @@ getActivityById = async (req, res) => {
     }).catch(err => console.log(err))
 }
 
+getActivityByDeviceId = async (req, res) => {
+    await Activity.find({ deviceid: req.params.id }, (err, activity) => {
+        if (err) {
+            return res.status(400).json({ success: false, error: err })
+        }
+
+        if (!activity) {
+            return res
+                .status(404)
+                .json({ success: false, error: `Activity not found` })
+        }
+        return res.status(200).json({ success: true, data: activity })
+    }).catch(err => console.log(err))
+}
+
 getActivities = async (req, res) => {
     await Activity.find({}, (err, activities) => {
         if (err) {
@@ -128,4 +143,5 @@ module.exports = {
     deleteActivity,
     getActivities,
     getActivityById,
+    getActivityByDeviceId,
 }
