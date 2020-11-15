@@ -9,7 +9,6 @@ const Activity = new Schema(
         name: { type: String, required: true },
         datetime: { type: Date, required: true },
         deviceid: { type: Number, required: true  },
-        //feature: { type: SchemaTypes.Double, required: true  },
         feature: { type: [SchemaTypes.Double], required: true  },
         visitcnt: { type: Number},
         stayhour: { type: Number},
