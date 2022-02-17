@@ -1,4 +1,4 @@
-const User = require('../models/soynet-user-model')
+const User = require('../models/cicd-user-model')
 
 createUser = (req, res) => {
     const body = req.body
@@ -88,6 +88,7 @@ deleteUser = async (req, res) => {
 }
 
 getUserById = async (req, res) => {
+    //await User.findById(req.params.id) {
     await User.findOne({ _id: req.params.id }, (err, user) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })

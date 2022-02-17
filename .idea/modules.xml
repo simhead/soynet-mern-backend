@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/soynet-mern-backend.iml" filepath="$PROJECT_DIR$/soynet-mern-backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cicd-mern-backend.iml" filepath="$PROJECT_DIR$/cicd-mern-backend.iml" />
     </modules>
   </component>
 </project>

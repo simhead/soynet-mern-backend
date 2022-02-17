@@ -7,16 +7,11 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 
 var app = express();
 
 app.use(cors())
-const movieRouter = require('./routes/movie-router')
-const userRouter = require('./routes/soynet-user-router')
-const deviceRouter = require('./routes/soynet-device-router')
-const activityRouter = require('./routes/soynet-activity-router')
-const activityDeviceRouter = require('./routes/soynet-activity-router')
+const userRouter = require('./routes/cicd-user-router')
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
@@ -24,19 +19,16 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+// this is to log in consol terminal
 app.use(logger('dev'));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/api', movieRouter);
-app.use('/soynet/api', userRouter);
-app.use('/soynet/api', deviceRouter);
-app.use('/soynet/faceid/api', activityRouter);
-app.use('/soynet/deviceid/api', activityDeviceRouter);
+app.use('/api/cicd', userRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
