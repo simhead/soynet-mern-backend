@@ -28,7 +28,7 @@ node {
         }
 
       stage('Remove Unused docker image') {
-        sh 'echo "docker rmi axwayaustralia/cicd-demo-backend:${env.BUILD_NUMBER}"'
+        sh 'echo "docker rmi axwayaustralia/cicd-demo-backend:"'${env.BUILD_NUMBER}
       }
 
 
