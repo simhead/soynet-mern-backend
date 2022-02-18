@@ -23,9 +23,15 @@ node {
         app.inside {
              sh 'echo "Push image"'
              }
-        app.push("${env.BUILD_NUMBER}")
+        docker.withRegistry( '', mydockerhub ) {
+            app.push("axwayaustralia/cicd-demo-backend:${env.BUILD_NUMBER}")
 
         }
+      stage('Remove Unused docker image') {
+        steps{
+            sh "docker rmi axwayaustralia/cicd-demo-backend:$BUILD_NUMBER"
+        }
+      }
 
 
       }
