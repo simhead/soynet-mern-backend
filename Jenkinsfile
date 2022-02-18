@@ -22,8 +22,8 @@ node {
         //app.inside {
              sh 'echo "Push image - login first"'
              //}
-        docker.withRegistry( 'https://docker.io', 'mydockerhub' ) {
-            dockerImage.push("axwayaustralia/cicd-demo-backend:${env.BUILD_NUMBER}")
+        docker.withRegistry( '', 'mydockerhub' ) {
+            dockerImage.push("${env.BUILD_NUMBER}")
             }
         }
 
