@@ -10,7 +10,7 @@ node {
         }
 
       stage('Build image') {
-        app = docker.build("axwayaustralia/cicd-demo-backend:1.1")
+        app = docker.build("axwayaustralia/cicd-demo-backend:${env.BUILD_NUMBER}")
         }
 
       stage('Test image') {
