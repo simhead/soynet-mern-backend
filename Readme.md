@@ -23,6 +23,9 @@ This project also supports CICD process.
 Particularily this project is to focus on CI part as follows:
 1. Develop code by integrating with Github @ https://github.com/simhead/soynet-mern-backend
 2. Test and validate locally
-3. Docker build and push image to DockerHub to axwayaustralia/cicd-demo-backend:[tagid]
+3. Push to Jenkins:
+   1. build docker image
+   2. push image to Dockerhub
+   3. initiate CD flow.
 
-Then follows the CD process from Github source @ https://github.com/simhead/cicd-demo-gitops-argocd
+Jenkins is to trigger CD flow by notifying the change in Github source @ https://github.com/simhead/cicd-demo-gitops-argocd
