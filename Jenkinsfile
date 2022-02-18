@@ -22,11 +22,10 @@ node {
       stage('Push image') {
         app.inside {
              sh 'echo "Push image - login first"'
-             sh "docker login -u axwayaustralia -p 2d0b6b65-b410-4d43-b627-02d98c298dad"
              }
-        //docker.withRegistry( '', mydockerhub ) {
+        docker.withRegistry( 'docker.io', '2d0b6b65-b410-4d43-b627-02d98c298dad' ) {
             app.push("axwayaustralia/cicd-demo-backend:${env.BUILD_NUMBER}")
-            //}
+            }
         }
 
       stage('Remove Unused docker image') {
