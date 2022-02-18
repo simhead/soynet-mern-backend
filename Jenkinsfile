@@ -1,24 +1,27 @@
-// This shows a simple example of how to archive the build output artifacts.
-pipeline {
-    agent any
-    def app
+node {
+      def app
+      stage('Clone repository') {
+        checkout scm
+        }
 
-    stages {
-        stage('Build') {
-            steps {
-                echo 'Building new docker image..'
-                app = docker.build("axwayaustralia/cicd-demo-backend:1.1")
-            }
+      stage('Build image') {
+        app = docker.build("axwayaustralia/cicd-demo-backend:1.1")
         }
-        stage('Test') {
-            steps {
-                echo 'Tesing.. NOT IMPLEMENTED'
-            }
+
+      stage('Test image') {
+        app.inside {
+             sh 'echo "Tests passed"'
+             }
         }
-        stage('Deploy') {
-            steps {
-                echo 'This is job for ArgoCD'
-            }
+
+      stage('Push image') {
+        app.inside {
+             sh 'echo "Push image"'
+             }
+        //docker.withRegistry('https://registry.hub.docker.com', 'git') {
+            //app.push("${env.BUILD_NUMBER}")
+            //app.push("latest")
+            //}
         }
-    }
-}
+
+      }
