@@ -23,7 +23,7 @@ node {
         app.inside {
              sh 'echo "Push image"'
              }
-        app = docker.push("axwayaustralia/cicd-demo-backend:${env.BUILD_NUMBER}")
+        app.push("${env.BUILD_NUMBER}")
 
         }
 
