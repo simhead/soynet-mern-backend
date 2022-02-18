@@ -28,7 +28,7 @@ node {
         }
 
       stage('Remove docker image for cleanup') {
-        dockerImage.rmi("${env.BUILD_NUMBER}")
+        sh "echo Build number: axwayaustralia/cicd-demo-backend:$BUILD_NUMBER"
       }
 
 
