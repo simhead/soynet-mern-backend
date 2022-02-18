@@ -23,10 +23,10 @@ node {
         app.inside {
              sh 'echo "Push image"'
              }
-        //docker.withRegistry('https://registry.hub.docker.com', 'git') {
-            //app.push("${env.BUILD_NUMBER}")
+        docker.withRegistry('https://registry.hub.docker.com', 'git') {
+            app.push("axwayaustralia/cicd-demo-backend:${env.BUILD_NUMBER}")
             //app.push("latest")
-            //}
+            }
         }
 
       }
