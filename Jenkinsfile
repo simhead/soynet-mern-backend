@@ -22,11 +22,14 @@ node {
       stage('Push image') {
         app.inside {
              sh 'echo "Push image"'
+             sh 'docker push axwayaustralia/cicd-demo-backend:${env.BUILD_NUMBER}'
              }
-        docker.withRegistry('https://registry.hub.docker.com', 'git') {
-            app.push("axwayaustralia/cicd-demo-backend:${env.BUILD_NUMBER}")
-            //app.push("latest")
-            }
+
         }
+      post {
+      		always {
+      			sh 'docker logout'
+      		}
+      	}
 
       }
