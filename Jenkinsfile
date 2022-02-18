@@ -29,6 +29,7 @@ node {
 
       stage('Remove docker image for cleanup') {
         sh "echo Build number: axwayaustralia/cicd-demo-backend:$BUILD_NUMBER"
+        sh "docker rmi axwayaustralia/cicd-demo-backend:$BUILD_NUMBER"
       }
 
 
